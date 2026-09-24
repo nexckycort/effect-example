@@ -1,0 +1,28 @@
+{
+  "name": "effect-auth",
+  "version": "1.0.0",
+  "description": "Better Auth + Drizzle + PostgreSQL + Effect 4",
+  "type": "module",
+  "scripts": {
+    "build": "bun run build.ts",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "dev": "bun run --env-file=.env --hot src/main.ts 2>&1 | tee server.log",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "node --env-file=.env node_modules/drizzle-kit/bin.cjs generate",
+    "db:migrate": "node --env-file=.env node_modules/drizzle-kit/bin.cjs migrate"
+  },
+  "dependencies": {
+    "@better-auth/drizzle-adapter": "1.7.5",
+    "@effect/platform-bun": "4.0.0-rc.117",
+    "@effect/sql-pg": "4.0.0-rc.117",
+    "better-auth": "1.7.5",
+    "drizzle-orm": "1.0.0-rc.4",
+    "effect": "4.0.0-rc.117",
+    "pg": "8.23.0"
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "drizzle-kit": "1.0.0-rc.4",
+    "typescript": "catalog:"
+  }
+}

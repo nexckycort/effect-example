@@ -1,0 +1,25 @@
+{
+  "name": "demo",
+  "private": true,
+  "author": "Nestor Cortina <nexckycort@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@12.5.1",
+  "devEngines": {
+    "runtime": [
+      {
+        "name": "bun",
+        "version": "^1.4",
+        "onFail": "download"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "lefthook install"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "bun-types": "catalog:",
+    "lefthook": "^2.1.14",
+    "typescript": "catalog:"
+  }
+}

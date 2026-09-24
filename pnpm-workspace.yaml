@@ -1,0 +1,26 @@
+minimumReleaseAge: 4320 # minutes
+
+sharedWorkspaceLockfile: false
+
+overrides:
+  '@effect/platform-node-shared': 4.0.0-rc.117
+
+patchedDependencies:
+  drizzle-orm@1.0.0-rc.4: apps/server/patches/drizzle-orm@1.0.0-rc.4.patch
+
+allowUnusedPatches: true
+
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+allowBuilds:
+  esbuild: true
+  lefthook: true
+  msgpackr-extract: true
+
+catalog:
+  '@types/bun': latest
+  '@types/node': ^24.13.3
+  bun-types: latest
+  typescript: ^7.0.2

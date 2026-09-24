@@ -1,0 +1,46 @@
+diff --git a/cache/core/cache-effect.cjs b/cache/core/cache-effect.cjs
+index 695cb95..b89b938 100644
+--- a/cache/core/cache-effect.cjs
++++ b/cache/core/cache-effect.cjs
+@@ -103 +103 @@ function make(cache) {
+-var EffectCacheError = class extends effect_Schema.TaggedErrorClass()("EffectCacheError", { cause: effect_Schema.Unknown }) {
++var EffectCacheError = class extends effect_Schema.TaggedError()("EffectCacheError", { cause: effect_Schema.Unknown }) {
+diff --git a/cache/core/cache-effect.js b/cache/core/cache-effect.js
+index f778fff..0e671ef 100644
+--- a/cache/core/cache-effect.js
++++ b/cache/core/cache-effect.js
+@@ -97 +97 @@ function make(cache) {
+-var EffectCacheError = class extends Schema$1.TaggedErrorClass()("EffectCacheError", { cause: Schema$1.Unknown }) {
++var EffectCacheError = class extends Schema$1.TaggedError()("EffectCacheError", { cause: Schema$1.Unknown }) {
+diff --git a/effect-core/errors.cjs b/effect-core/errors.cjs
+index 9ec5bab..657ff33 100644
+--- a/effect-core/errors.cjs
++++ b/effect-core/errors.cjs
+@@ -8 +8 @@ effect_Schema = require_runtime.__toESM(effect_Schema);
+-var EffectDrizzleError = class extends effect_Schema.TaggedErrorClass()("EffectDrizzleError", {
++var EffectDrizzleError = class extends effect_Schema.TaggedError()("EffectDrizzleError", {
+@@ -14 +14 @@ var EffectDrizzleError = class extends effect_Schema.TaggedErrorClass()("EffectD
+-var EffectDrizzleQueryError = class EffectDrizzleQueryError extends effect_Schema.TaggedErrorClass()("EffectDrizzleQueryError", {
++var EffectDrizzleQueryError = class EffectDrizzleQueryError extends effect_Schema.TaggedError()("EffectDrizzleQueryError", {
+@@ -28 +28 @@ var EffectDrizzleQueryError = class EffectDrizzleQueryError extends effect_Schem
+-var EffectTransactionRollbackError = class extends effect_Schema.TaggedErrorClass()("EffectTransactionRollbackError", {}) {
++var EffectTransactionRollbackError = class extends effect_Schema.TaggedError()("EffectTransactionRollbackError", {}) {
+@@ -32 +32 @@ var EffectTransactionRollbackError = class extends effect_Schema.TaggedErrorClas
+-var MigratorInitError = class extends effect_Schema.TaggedErrorClass()("MigratorInitError", { exitCode: effect_Schema.Literals(["databaseMigrations", "localMigrations"]) }) {
++var MigratorInitError = class extends effect_Schema.TaggedError()("MigratorInitError", { exitCode: effect_Schema.Literals(["databaseMigrations", "localMigrations"]) }) {
+diff --git a/effect-core/errors.js b/effect-core/errors.js
+index 290da3a..82ca43e 100644
+--- a/effect-core/errors.js
++++ b/effect-core/errors.js
+@@ -5 +5 @@ import * as Schema$1 from "effect/Schema";
+-var EffectDrizzleError = class extends Schema$1.TaggedErrorClass()("EffectDrizzleError", {
++var EffectDrizzleError = class extends Schema$1.TaggedError()("EffectDrizzleError", {
+@@ -11 +11 @@ var EffectDrizzleError = class extends Schema$1.TaggedErrorClass()("EffectDrizzl
+-var EffectDrizzleQueryError = class EffectDrizzleQueryError extends Schema$1.TaggedErrorClass()("EffectDrizzleQueryError", {
++var EffectDrizzleQueryError = class EffectDrizzleQueryError extends Schema$1.TaggedError()("EffectDrizzleQueryError", {
+@@ -25 +25 @@ var EffectDrizzleQueryError = class EffectDrizzleQueryError extends Schema$1.Tag
+-var EffectTransactionRollbackError = class extends Schema$1.TaggedErrorClass()("EffectTransactionRollbackError", {}) {
++var EffectTransactionRollbackError = class extends Schema$1.TaggedError()("EffectTransactionRollbackError", {}) {
+@@ -29 +29 @@ var EffectTransactionRollbackError = class extends Schema$1.TaggedErrorClass()("
+-var MigratorInitError = class extends Schema$1.TaggedErrorClass()("MigratorInitError", { exitCode: Schema$1.Literals(["databaseMigrations", "localMigrations"]) }) {
++var MigratorInitError = class extends Schema$1.TaggedError()("MigratorInitError", { exitCode: Schema$1.Literals(["databaseMigrations", "localMigrations"]) }) {
