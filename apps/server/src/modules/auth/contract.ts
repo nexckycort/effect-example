@@ -1,16 +1,16 @@
-import { Context, Schema } from 'effect';
+import { Context, Schema } from 'effect'
 import {
   HttpApiEndpoint,
   HttpApiGroup,
   HttpApiMiddleware,
-} from 'effect/unstable/httpapi';
+} from 'effect/unstable/httpapi'
 
 export const PublicUser = Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   email: Schema.String,
   emailVerified: Schema.Boolean,
-});
+})
 export class CurrentUser extends Context.Service<
   CurrentUser,
   typeof PublicUser.Type
@@ -19,17 +19,17 @@ export class CurrentUser extends Context.Service<
 export class Unauthorized extends Schema.TaggedError<Unauthorized>()(
   'Unauthorized',
   {},
-  { httpApiStatus: 401 },
+  { httpApiStatus: 401 }
 ) {}
 export class ForbiddenOrigin extends Schema.TaggedError<ForbiddenOrigin>()(
   'ForbiddenOrigin',
   {},
-  { httpApiStatus: 403 },
+  { httpApiStatus: 403 }
 ) {}
 export class AuthUnavailable extends Schema.TaggedError<AuthUnavailable>()(
   'AuthUnavailable',
   {},
-  { httpApiStatus: 503 },
+  { httpApiStatus: 503 }
 ) {}
 
 export class SessionAuth extends HttpApiMiddleware.Service<
@@ -41,4 +41,4 @@ export class SessionAuth extends HttpApiMiddleware.Service<
 
 export const MeApi = HttpApiGroup.make('me')
   .add(HttpApiEndpoint.get('get', '/api/me', { success: PublicUser }))
-  .middleware(SessionAuth);
+  .middleware(SessionAuth)

@@ -5,7 +5,7 @@ import {
   text,
   timestamp,
   uniqueIndex,
-} from 'drizzle-orm/pg-core';
+} from 'drizzle-orm/pg-core'
 
 // Esquema de Better Auth 1.7 para email/password y sesiones en PostgreSQL.
 export const user = pgTable('auth_user', {
@@ -20,7 +20,7 @@ export const user = pgTable('auth_user', {
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-});
+})
 
 export const session = pgTable(
   'auth_session',
@@ -40,8 +40,8 @@ export const session = pgTable(
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
   },
-  (table) => [index('auth_session_user_idx').on(table.userId)],
-);
+  (table) => [index('auth_session_user_idx').on(table.userId)]
+)
 
 export const account = pgTable(
   'auth_account',
@@ -74,10 +74,10 @@ export const account = pgTable(
     index('auth_account_user_idx').on(table.userId),
     uniqueIndex('auth_account_provider_account_idx').on(
       table.providerId,
-      table.accountId,
+      table.accountId
     ),
-  ],
-);
+  ]
+)
 
 export const verification = pgTable(
   'auth_verification',
@@ -93,5 +93,5 @@ export const verification = pgTable(
       .notNull()
       .defaultNow(),
   },
-  (table) => [index('auth_verification_identifier_idx').on(table.identifier)],
-);
+  (table) => [index('auth_verification_identifier_idx').on(table.identifier)]
+)
