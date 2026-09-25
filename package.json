@@ -3,6 +3,7 @@
   "private": true,
   "author": "Nestor Cortina <nexckycort@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "packageManager": "pnpm@12.5.1",
   "devEngines": {
     "runtime": [
@@ -14,12 +15,16 @@
     ]
   },
   "scripts": {
+    "prepare": "effect-tsgo patch --typescript --oxlint",
     "postinstall": "lefthook install"
   },
   "devDependencies": {
+    "@effect/tsgo": "0.45.0",
     "@types/bun": "catalog:",
     "bun-types": "catalog:",
     "lefthook": "^2.1.14",
+    "oxlint": "^1.85.0",
+    "oxlint-tsgolint": "7.0.2001",
     "typescript": "catalog:"
   }
 }
