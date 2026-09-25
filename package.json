@@ -8,12 +8,12 @@
     "postinstall": "lefthook install"
   },
   "devDependencies": {
-    "@effect/tsgo": "0.45.0",
+    "@effect/tsgo": "catalog:",
     "@types/bun": "catalog:",
     "bun-types": "catalog:",
     "lefthook": "^2.1.14",
     "oxfmt": "^0.70.0",
-    "oxlint": "^1.85.0",
+    "oxlint": "1.82.0",
     "oxlint-tsgolint": "7.0.2001",
     "typescript": "catalog:"
   },

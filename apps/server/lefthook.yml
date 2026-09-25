@@ -3,18 +3,18 @@ pre-commit:
   commands:
     typecheck-server:
       root: apps/server
-      glob: "*.{js,ts,jsx,tsx,prisma}"
+      glob: '*.{js,ts,jsx,tsx,prisma}'
       run: bun typecheck
-      fail_text: "TypeScript type checking failed for server"
+      fail_text: 'TypeScript type checking failed for server'
     lint-server:
       root: apps/server
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: '*.{js,ts,jsx,tsx}'
       run: bun lint {staged_files}
       stage_fixed: true
-      fail_text: "linting failed for server"
+      fail_text: 'linting failed for server'
     fmt-server:
       root: apps/server
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: '*.{js,ts,jsx,tsx}'
       run: bun fmt {staged_files}
       stage_fixed: true
-      fail_text: "formatting failed for server"
+      fail_text: 'formatting failed for server'

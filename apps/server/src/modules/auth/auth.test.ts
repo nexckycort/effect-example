@@ -1,13 +1,23 @@
-import { and, eq, inArray } from 'drizzle-orm'
-import { drizzle } from 'drizzle-orm/node-postgres'
-import { Layer } from 'effect'
-import { HttpRouter, HttpServer } from 'effect/unstable/http'
 import assert from 'node:assert/strict'
 import { randomUUID } from 'node:crypto'
 import { after, before, test } from 'node:test'
+import { and, eq, inArray } from 'drizzle-orm'
+import { drizzle } from 'drizzle-orm/node-postgres'
+import { Layer, Schema } from 'effect'
+import { HttpRouter, HttpServer } from 'effect/unstable/http'
 import { Pool } from 'pg'
 import { AppRoutes } from '../../app.ts'
 import { account, session, user } from '../../db/schema/auth.ts'
+import { Todo } from '../todos/contract.ts'
+
+const decodeSignUp = Schema.decodeUnknownSync(
+  Schema.Struct({ user: Schema.Struct({ id: Schema.String }) })
+)
+const decodeSession = Schema.decodeUnknownSync(
+  Schema.Struct({ token: Schema.String })
+)
+const decodeTodo = Schema.decodeUnknownSync(Todo)
+const decodeTodos = Schema.decodeUnknownSync(Schema.Array(Todo))
 
 const origin = new URL(process.env.BETTER_AUTH_URL!).origin
 const { handler, dispose } = HttpRouter.toWebHandler(
@@ -60,7 +70,7 @@ const signUp = async (name: string): Promise<UserSession> => {
     password,
   })
   assert.equal(response.status, 200, await response.clone().text())
-  const data = await response.json()
+  const data = decodeSignUp(await response.json())
   createdUsers.push(data.user.id)
   return {
     id: data.user.id,
@@ -144,17 +154,21 @@ test('CRUD: el propietario sale de la sesión, y otro usuario no puede leer/edit
     ownerId: bob.id,
   })
   assert.equal(createdResponse.status, 201)
-  const todo = await createdResponse.json()
+  const todo = decodeTodo(await createdResponse.json())
   assert.equal(todo.title, 'Aprender Effect')
   assert.equal(todo.done, false)
   assert.equal(
     (await call('GET', `/api/todos/${todo.id}`, alice.cookie)).status,
     200
   )
-  const aliceList = await (await call('GET', '/api/todos', alice.cookie)).json()
-  assert.ok(aliceList.some((item: { id: string }) => item.id === todo.id))
-  const bobList = await (await call('GET', '/api/todos', bob.cookie)).json()
-  assert.ok(!bobList.some((item: { id: string }) => item.id === todo.id))
+  const aliceList = decodeTodos(
+    await (await call('GET', '/api/todos', alice.cookie)).json()
+  )
+  assert.ok(aliceList.some((item) => item.id === todo.id))
+  const bobList = decodeTodos(
+    await (await call('GET', '/api/todos', bob.cookie)).json()
+  )
+  assert.ok(!bobList.some((item) => item.id === todo.id))
   for (const method of ['GET', 'PATCH', 'DELETE']) {
     assert.equal(
       (
@@ -259,7 +273,7 @@ test('una sesión vencida no permite acceder', async () => {
     password,
   })
   assert.equal(response.status, 200)
-  const data = await response.json()
+  const data = decodeSession(await response.json())
   await db
     .update(session)
     .set({ expiresAt: new Date(Date.now() - 1000) })
