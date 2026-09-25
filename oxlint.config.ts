@@ -1,7 +1,7 @@
-import { defineConfig } from "oxlint";
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   rules: {
-    "no-debugger": "error",
+    'no-debugger': 'error',
   },
 });

@@ -2,18 +2,7 @@
   "name": "demo",
   "private": true,
   "author": "Nestor Cortina <nexckycort@gmail.com>",
-  "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@12.5.1",
-  "devEngines": {
-    "runtime": [
-      {
-        "name": "bun",
-        "version": "^1.4",
-        "onFail": "download"
-      }
-    ]
-  },
   "scripts": {
     "prepare": "effect-tsgo patch --typescript --oxlint",
     "postinstall": "lefthook install"
@@ -23,8 +12,19 @@
     "@types/bun": "catalog:",
     "bun-types": "catalog:",
     "lefthook": "^2.1.14",
+    "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
     "oxlint-tsgolint": "7.0.2001",
     "typescript": "catalog:"
-  }
+  },
+  "devEngines": {
+    "runtime": [
+      {
+        "name": "bun",
+        "version": "^1.4",
+        "onFail": "download"
+      }
+    ]
+  },
+  "packageManager": "pnpm@12.5.1"
 }
