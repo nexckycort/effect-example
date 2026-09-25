@@ -1,13 +1,13 @@
-import assert from 'node:assert/strict'
-import { randomUUID } from 'node:crypto'
-import { after, before, test } from 'node:test'
 import { and, eq, inArray } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { Layer } from 'effect'
 import { HttpRouter, HttpServer } from 'effect/unstable/http'
+import assert from 'node:assert/strict'
+import { randomUUID } from 'node:crypto'
+import { after, before, test } from 'node:test'
 import { Pool } from 'pg'
 import { AppRoutes } from '../../app.ts'
-import { account, session, user } from './tables.ts'
+import { account, session, user } from '../../db/schema/auth.ts'
 
 const origin = new URL(process.env.BETTER_AUTH_URL!).origin
 const { handler, dispose } = HttpRouter.toWebHandler(

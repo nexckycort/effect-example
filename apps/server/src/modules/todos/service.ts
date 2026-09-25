@@ -1,5 +1,6 @@
 import { and, eq } from 'drizzle-orm'
 import { Context, Effect, Layer, Schema } from 'effect'
+import { todos } from '../../db/schema/todo.ts'
 import { Database } from '../../infrastructure/database/client.ts'
 import { CurrentUser } from '../auth/contract.ts'
 import {
@@ -9,7 +10,6 @@ import {
   TodoStorageError,
   type UpdateTodo,
 } from './contract.ts'
-import { todos } from './tables.ts'
 
 const columns = { id: todos.id, title: todos.title, done: todos.done }
 const decode = Schema.decodeUnknownEffect(Schema.Array(Todo))

@@ -8,7 +8,7 @@ import {
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { user } from '../auth/tables.ts'
+import { user } from './auth.ts'
 
 export const todos = pgTable(
   'todo',

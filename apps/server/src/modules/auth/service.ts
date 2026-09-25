@@ -1,11 +1,11 @@
 import { drizzleAdapter } from '@better-auth/drizzle-adapter/relations-v2'
 import { betterAuth } from 'better-auth/minimal'
 import { Config, Context, Effect, Layer, Redacted, Schema } from 'effect'
+import * as tables from '../../db/schema/auth.ts'
 import {
   AuthDatabase,
   type AuthDb,
 } from '../../infrastructure/database/auth-client.ts'
-import * as tables from './tables.ts'
 
 const makeAuth = (db: AuthDb, baseURL: string, secret: string) =>
   betterAuth({
