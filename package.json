@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "prepare": "effect-tsgo patch --typescript --oxlint",
-    "postinstall": "lefthook install"
+    "postinstall": "lefthook install",
+    "clean:all": "pnpm --parallel -r run clean && rm -rf node_modules"
   },
   "devDependencies": {
     "@effect/tsgo": "catalog:",
@@ -26,5 +27,5 @@
       }
     ]
   },
-  "packageManager": "pnpm@12.5.1"
+  "packageManager": "pnpm@12.8.1"
 }
