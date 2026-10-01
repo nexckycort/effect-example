@@ -3,7 +3,7 @@ import {
   HttpApiEndpoint,
   HttpApiGroup,
   HttpApiMiddleware,
-} from 'effect/unstable/httpapi'
+} from 'effect/http-api'
 
 export const PublicUser = Schema.Struct({
   id: Schema.String,

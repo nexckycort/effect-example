@@ -1,9 +1,5 @@
 import { Effect, Option } from 'effect'
-import {
-  HttpRouter,
-  HttpServerRequest,
-  HttpServerResponse,
-} from 'effect/unstable/http'
+import { HttpRouter, HttpServerRequest, HttpServerResponse } from 'effect/http'
 import { AuthUnavailable } from '../../modules/auth/contract.ts'
 import { Auth } from './client.ts'
 

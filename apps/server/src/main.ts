@@ -1,6 +1,6 @@
 import { BunHttpServer, BunRuntime } from '@effect/platform-bun'
 import { Config, Layer } from 'effect'
-import { HttpRouter } from 'effect/unstable/http'
+import { HttpRouter } from 'effect/http'
 import { AppRoutes } from './app.ts'
 
 const ServerLive = HttpRouter.serve(AppRoutes).pipe(

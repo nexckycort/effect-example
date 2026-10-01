@@ -1,10 +1,6 @@
 import { Effect, Layer } from 'effect'
-import {
-  Cookies,
-  HttpServerRequest,
-  HttpServerResponse,
-} from 'effect/unstable/http'
-import { HttpApiBuilder } from 'effect/unstable/httpapi'
+import { Cookies, HttpServerRequest, HttpServerResponse } from 'effect/http'
+import { HttpApiBuilder } from 'effect/http-api'
 import { Api } from '../../api.ts'
 import { Auth } from '../../infrastructure/auth/client.ts'
 import { authHeaders } from '../../infrastructure/auth/http.ts'

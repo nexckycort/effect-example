@@ -1,5 +1,5 @@
 import { Layer } from 'effect'
-import { HttpApiBuilder, HttpApiScalar } from 'effect/unstable/httpapi'
+import { HttpApiBuilder, HttpApiScalar } from 'effect/http-api'
 import { Api } from './api.ts'
 import { Auth } from './infrastructure/auth/client.ts'
 import { BetterAuthRoutes } from './infrastructure/auth/http.ts'

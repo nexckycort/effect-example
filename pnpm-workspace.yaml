@@ -16,12 +16,12 @@ allowBuilds:
   lefthook: true
 
 catalog:
-  '@effect/platform-bun': 4.0.0-rc.117
-  '@effect/platform-node-shared': 4.0.0-rc.117
-  '@effect/sql-pg': 4.0.0-rc.117
+  '@effect/platform-bun': 4.0.0
+  '@effect/platform-node-shared': 4.0.0
+  '@effect/sql-pg': 4.0.0
   '@effect/tsgo': 0.45.0
   '@types/bun': latest
   '@types/node': ^24.13.3
   bun-types: latest
-  effect: 4.0.0-rc.117
+  effect: 4.0.0
   typescript: ^7.0.2

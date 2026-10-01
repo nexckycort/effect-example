@@ -1,8 +1,9 @@
-# Compatibilidad de Drizzle con Effect rc.117
+# Compatibilidad de Drizzle con Effect 4.0.0
 
-`drizzle-orm@1.0.0-rc.4` permite Effect rc.117 en sus peer dependencies,
+`drizzle-orm@1.0.0-rc.4` permite Effect 4.0.0 en sus peer dependencies,
 pero sus módulos de errores y caché todavía llaman a `Schema.TaggedErrorClass`.
-Effect rc.117 exporta ese constructor como `Schema.TaggedError`.
+Effect 4.0.0 exporta ese constructor como `Schema.TaggedError`; no incluye
+el alias anterior. El parche sigue siendo necesario con la versión estable.
 
 El parche cambia únicamente esas referencias en las distribuciones ESM y CJS.
 pnpm lo aplica mediante `patchedDependencies` en `pnpm-workspace.yaml`.
